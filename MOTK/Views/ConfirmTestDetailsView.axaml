@@ -1,0 +1,116 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MOTK.Views"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.ConfirmTestDetailsView">
+
+    <Design.DataContext>
+        <viewModels:ConfirmTestDetailsViewModel/>
+    </Design.DataContext>
+
+  <Panel>
+      <Grid RowDefinitions="80, 480, 20, 70" ColumnDefinitions="30, 740, 30" ShowGridLines="False">
+          <Panel Grid.Row="0" Grid.Column="1">
+              <views:NewTestStagesBanner></views:NewTestStagesBanner>
+          </Panel>
+          <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="70,100,*" Background="white" ShowGridLines="False">
+              <TextBlock Grid.Row="0" Grid.Column="0" Classes="ConfirmSettings" Text="Confirm Details" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}"></TextBlock>
+            <Grid  Grid.Row="1" ColumnDefinitions="20,700,20" ShowGridLines="False">
+                <Grid Grid.Column="1" ColumnDefinitions="20,660,20" RowDefinitions="50,50" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" ShowGridLines="False">
+                    <Grid Grid.Row="0" Grid.Column="1" ColumnDefinitions="20,*" ShowGridLines="False">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource InformationBlue}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="1" Classes="ConfirmationWarnHeading">Clean Sensor before testing</TextBlock>
+                    </Grid>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Classes="ConfirmationWarning" Text="{Binding $parent[Window].DataContext.ConfirmationWarning}"></TextBlock>
+                </Grid>
+            </Grid>
+              <Grid Grid.Row="2" RowDefinitions="25,20,20,20,20,20,20,20,20,20,20,20,20,20" ShowGridLines="False">
+                  <Grid Grid.Row="1" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <Grid Grid.Column="1" ColumnDefinitions="20,120,100,60" ShowGridLines="False">
+                          <Image Grid.Column="0" Source="{Binding Source={StaticResource AssetDetails}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                          <TextBlock Grid.Column="1" Classes="ConfirmationSubHeadings">ASSET DETAILS</TextBlock>
+                        <Button Grid.Column="3" Classes="ConfirmationEdit" Command="{Binding $parent[Window].DataContext.AssetDetailsStage}">
+                              <Grid ColumnDefinitions="45,20" ShowGridLines="False">
+                                  <TextBlock Grid.Column="0" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}" Padding="10,-5,0,-5">Edit</TextBlock>
+                                  <Image Grid.Column="1" Source="{Binding Source={StaticResource BlueRightArrow}, Path=Source}" Height="12" Width="12"/>
+                              </Grid>
+                          </Button>
+                      </Grid>
+                      <Grid Grid.Column="2" ColumnDefinitions="20,120,100,60" ShowGridLines="False">
+                          <Image Grid.Column="0" Source="{Binding Source={StaticResource OilDetails}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                          <TextBlock Grid.Column="1" Classes="ConfirmationSubHeadings">OIL DETAILS</TextBlock>
+                        <Button Grid.Column="3" Classes="ConfirmationEdit" Command="{Binding $parent[Window].DataContext.NewTestOilStage}">
+                              <Grid ColumnDefinitions="45,20" ShowGridLines="False">
+                                  <TextBlock Grid.Column="0" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}" Padding="10,-5,0,-5">Edit</TextBlock>
+                                  <Image Grid.Column="1" Source="{Binding Source={StaticResource BlueRightArrow}, Path=Source}" Height="12" Width="12"/>
+                              </Grid>
+                          </Button>
+                      </Grid>
+                  </Grid>
+                  <Grid Grid.Row="3" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">Asset ID</TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">Manufacturer</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="4" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding AssetId}"></TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding Manufacturer}"></TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="5" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">Asset Description</TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">Oil Name</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="6" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding AssetDescription}"></TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding OilName}"></TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="7" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                     <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">Application</TextBlock>
+                     <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">Viscosity</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="8" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding Application}"></TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding Viscosity}"></TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="9" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">Hours Used</TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">Visual Inspection</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="10" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding OilHours}"></TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding SelectedOilVisualCheck}"></TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="11" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">Sample Point</TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">Serial Number</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="12" ColumnDefinitions="20,350,350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding SelectedSamplePointName}"></TextBlock>
+                      <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding SensorSerialNumber}"></TextBlock>
+                  </Grid>
+              </Grid>
+          </Grid>
+          <Grid Grid.Row="3" Column="1">
+              <Grid ColumnDefinitions="109,491,140" ShowGridLines="False">
+                  <Button Grid.Column="0" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.NewTestVisualCheckStage}" Background="{Binding $parent[Window].DataContext.BackButtonColor}">
+                     <Grid ColumnDefinitions="30,79" ShowGridLines="False">
+                         <Image Grid.Column="0" Source="{Binding Source={StaticResource BackArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                         <TextBlock Grid.Column="1" Classes="BackText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Back</TextBlock>
+                     </Grid>
+                  </Button>
+                  <Button Grid.Column="2" Classes="RunTest" Command="{Binding $parent[Window].DataContext.NewTestResultsStage}" Background="{Binding $parent[Window].DataContext.MotBlueColor}">
+                      <Grid ColumnDefinitions="85,20" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="NextText">Run Test</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource NextArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Left"/>
+                      </Grid>
+                  </Button>
+              </Grid>
+          </Grid>
+      </Grid>
+  </Panel>
+
+
+</UserControl>

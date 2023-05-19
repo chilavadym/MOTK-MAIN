@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.HelpView">
+
+    <Grid RowDefinitions="25, 250, 25, 250" ColumnDefinitions="25, 750, 25" ShowGridLines="False">
+            <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="25, 40, 110, 50, 25" ColumnDefinitions="25, 700, 25" ShowGridLines="False" Background="white">
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="35, 195" ShowGridLines="False">
+                    <Image Grid.Column="0" Source="{Binding Source={StaticResource Information}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Column="1" Classes="HelpHeading" Text="Quick Start Guide"></TextBlock>
+                </Grid>
+                <TextBlock Grid.Row="2" Grid.Column="1" Classes="HelpText" Text="{Binding $parent[Window].DataContext.QuickStartGuideText}" TextWrapping="Wrap"></TextBlock>
+                <Button Grid.Row="3" Grid.Column="1" Command="{Binding $parent[Window].DataContext.QuickStart}" Classes="Help" Background="{Binding $parent[Window].DataContext.MotBlueColor}">View Quick Start Guide</Button>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1" RowDefinitions="25, 40, 110, 50, 25" ColumnDefinitions="25, 700, 25" ShowGridLines="False" Background="white">
+                <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="35, 195" ShowGridLines="False">
+                  <Image Grid.Column="0" Source="{Binding Source={StaticResource Information}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                  <TextBlock Grid.Column="1" Classes="HelpHeading" Text="User Manual"></TextBlock>
+                </Grid>
+                <TextBlock Grid.Row="2" Grid.Column="1" Classes="HelpText" Text="{Binding $parent[Window].DataContext.FullUserManualText}" TextWrapping="Wrap"></TextBlock>
+                <Button Grid.Row="3" Command="{Binding $parent[Window].DataContext.UserManual}" Grid.Column="1" Classes="Help" Background="{Binding $parent[Window].DataContext.MotBlueColor}">View User Manual</Button>
+            </Grid>
+        </Grid>
+</UserControl>

@@ -1,0 +1,127 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.SavedTestsView">
+
+    <Design.DataContext>
+        <viewModels:SavedTestsViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="100,50,40,400" ColumnDefinitions="30, 740, 30" ShowGridLines="False">
+        <TextBlock Grid.Row="0" Grid.Column="1" Classes="SavedTests" Text="Saved Tests"></TextBlock>
+        <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="665,75" ShowGridLines="False">
+            <TextBox Grid.Column="0" CornerRadius="0" Text="{Binding SavedTestToSearch}" Watermark="Search Saved Tests On Asset ID..." Padding="15,0,0,0" AcceptsReturn="True" VerticalContentAlignment="Center"></TextBox>
+            <Button Grid.Column="1" Classes="NoBorderAndTransparent" Padding="0" Command="{Binding SearchClicked}">
+                <Image Source="{Binding Source={StaticResource SearchButton}, Path=Source}" Height="60" Width="75"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1"  ColumnDefinitions="500,237" ShowGridLines="False">
+            <TextBlock Grid.Column="0" Classes="RowCount" Text="{Binding SavedTestsCount}" VerticalAlignment="Center"></TextBlock>
+            <Button Grid.Column="1" Classes="ClearSearch" Padding="-1" HorizontalAlignment="Right" IsVisible="{Binding SearchButtonClicked}" Command="{Binding SearchCleared}">
+                <TextBlock Classes="ClearSearch" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Clear Search</TextBlock>
+            </Button>
+        </Grid>
+        <DataGrid Grid.Row="3" Grid.Column="1"  Items="{Binding SavedTestRows}" RowBackground="White" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="{Binding $parent[Window].DataContext.GridLineColor}" SelectedItem="{Binding SelectedSavedTest}" RowHeight="60" HorizontalScrollBarVisibility="Disabled">
+        <DataGrid.Columns>
+          <DataGridTemplateColumn>
+            <DataGridTemplateColumn.HeaderTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="90,15,5">
+                  <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Date / Time" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                  <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderDateTime}">
+                    <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                  </Button>
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock Classes="SavedTestsGridContent" Text="{Binding DateOfTest}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTemplateColumn>
+            <DataGridTemplateColumn.HeaderTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="100,55">
+                  <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Oil Condition" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                  <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderResult}">
+                    <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                  </Button>
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <Grid>
+                  <TextBlock Grid.Row="0" Classes="SavedTestsGridContentBold" Text="{Binding OilCondition}" />
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTemplateColumn>
+            <DataGridTemplateColumn.HeaderTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="55,15,40">
+                  <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Result" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                  <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderResult}">
+                    <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                  </Button>
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <Grid>
+                    <Image Source="{Binding Source={StaticResource GraphAlert}, Path=Source}" IsVisible="{Binding ResultIsAlert}" Height="25" HorizontalAlignment="Left"/>
+                    <Image Source="{Binding Source={StaticResource GraphCaution}, Path=Source}" IsVisible="{Binding ResultIsCaution}" Height="25" HorizontalAlignment="Left"/>
+                    <Image Source="{Binding Source={StaticResource GraphOkay}, Path=Source}" IsVisible="{Binding ResultIsOkay}" Height="25" HorizontalAlignment="Left" />
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTemplateColumn>
+            <DataGridTemplateColumn.HeaderTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="65,15, 30">
+                  <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Asset ID" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                  <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderAssetId}">
+                    <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                  </Button>
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                  <Grid RowDefinitions="*,*">
+                      <TextBlock Grid.Row="0" Classes="SavedTestsGridContentBold" Text="{Binding AssetId}" />
+                      <TextBlock Grid.Row="1" Classes="SavedTestsGridContent" Text="{Binding AssetDescription}" />
+                  </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+          <DataGridTemplateColumn>
+            <DataGridTemplateColumn.HeaderTemplate>
+              <DataTemplate>
+                <Grid ColumnDefinitions="55,15,60">
+                  <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Test ID" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                  <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderTestId}">
+                    <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                  </Button>
+                </Grid>
+              </DataTemplate>
+            </DataGridTemplateColumn.HeaderTemplate>
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                  <TextBlock Classes="SavedTestsGridContent" Text="{Binding TestId}" />
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+        </DataGrid.Columns>
+      </DataGrid>
+    </Grid>
+</UserControl>

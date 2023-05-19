@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
+             Height ="700"
+             Width="1000"
+             Icon="/Assets/Icon.ico"
+             ExtendClientAreaToDecorationsHint="True"
+             TransparencyLevelHint="AcrylicBlur"
+             Background="Transparent"
+             x:Class="MOTK.Views.MotMainWindowView">
+    
+    <Design.DataContext>
+    <viewModels:MotMainWindowViewModel/>
+  </Design.DataContext>
+
+    <Border BorderBrush="{Binding MotBlueColor}"
+                    BorderThickness="0.5"
+                    CornerRadius="0"
+                    ClipToBounds="true">
+
+      <Grid ShowGridLines="false" RowDefinitions="30,670">
+          <Grid Grid.Row="0" ColumnDefinitions="40,300">
+              <Image Grid.Column="0" Source="{Binding Source={StaticResource Icon}, Path=Source}"  Height="20" Width="20" HorizontalAlignment="Center"/>
+              <TextBlock Grid.Column="1" Text="{Binding Title}" VerticalAlignment="Center"></TextBlock>
+          </Grid>
+          <Grid Grid.Row="1" ShowGridLines="false" ColumnDefinitions="200,800">
+          <Grid Background="{Binding MotBlueColor}" Grid.Column="0" RowDefinitions="90,290,290" ShowGridLines="false">
+              <Button Grid.Row="0" Classes="NoBorderAndTransparent" Command="{Binding MobileOilTestKit}" IsEnabled="{Binding MobileOilTestKitEnabled}">
+                <Grid ColumnDefinitions="50,150">
+                  <Image Grid.Column="0" Source="{Binding Source={StaticResource MobileOilTestKitSmall}, Path=Source}"  Height="20" Width="20" HorizontalAlignment="Center" />
+                  <TextBlock Grid.Column="1" Classes="MobileOilTestKitSmall" HorizontalAlignment="Left">Mobile Oil Test Kit</TextBlock>
+                </Grid>
+              </Button>
+              <Grid Grid.Row="1" RowDefinitions="45,45,45,45,65,310" ShowGridLines="False">
+                  <Button Grid.Row="0" Classes="NoBorderAndTransparent" Command="{Binding NewTest}" IsEnabled="{Binding NewTestEnabled}">
+                      <Grid ColumnDefinitions="50,150">
+                          <Image IsVisible="{Binding NewTestClicked}" Source="{Binding Source={StaticResource Plus}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <Image IsVisible="{Binding !NewTestClicked}" Source="{Binding Source={StaticResource PlusInactive}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <TextBlock Grid.Column="1" Classes="ItemInSideMenu" HorizontalAlignment="Left">New Test</TextBlock>
+                      </Grid>
+                  </Button>
+                  <Button Grid.Row="1" Classes="NoBorderAndTransparent" Command="{Binding SavedTests}" IsEnabled="{Binding SavedTestsEnabled}">
+                      <Grid ColumnDefinitions="50,150">
+                          <Image IsVisible="{Binding SavedTestsClicked}" Source="{Binding Source={StaticResource Disk}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <Image IsVisible="{Binding !SavedTestsClicked}" Source="{Binding Source={StaticResource DiskInactive}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <TextBlock Grid.Column="1" Classes="ItemInSideMenu" HorizontalAlignment="Left">Saved Tests</TextBlock>
+                      </Grid>
+                  </Button>
+                  <Button Grid.Row="2" Classes="NoBorderAndTransparent" Command="{Binding Settings}" IsEnabled="{Binding SettingsEnabled}">
+                      <Grid ColumnDefinitions="50,150">
+                          <Image IsVisible="{Binding SettingsClicked}" Source="{Binding Source={StaticResource Gear}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <Image IsVisible="{Binding !SettingsClicked}" Source="{Binding Source={StaticResource GearInactive}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <TextBlock Grid.Column="1" Classes="ItemInSideMenu" HorizontalAlignment="Left">Settings</TextBlock>
+                      </Grid>
+                  </Button>
+                  <Button Grid.Row="3" Classes="NoBorderAndTransparent" Command="{Binding Help}" IsEnabled="{Binding HelpEnabled}">
+                      <Grid ColumnDefinitions="50,150">
+                          <Image IsVisible="{Binding HelpClicked}" Source="{Binding Source={StaticResource QuestionMark}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <Image IsVisible="{Binding !HelpClicked}" Source="{Binding Source={StaticResource QuestionMarkInactive}, Path=Source}" Grid.Column="0" Height="20" Width="20" HorizontalAlignment="Center" />
+                          <TextBlock Grid.Column="1" Classes="ItemInSideMenu" HorizontalAlignment="Left">Help</TextBlock>
+                      </Grid>
+                  </Button>
+                  <Grid Grid.Row="4" RowDefinitions="30,20" ShowGridLines="False">
+                      <TextBlock Grid.Row="0" Classes="VersionNumbers" Text="{Binding AppNumberString}" VerticalAlignment="Bottom"></TextBlock>
+                      <TextBlock Grid.Row="1" Classes="VersionNumbers" Text="{Binding OilDatabaseVersionString}" VerticalAlignment="Center"></TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="5" ColumnDefinitions="20,155,15">
+                      <Image Grid.Column="1" Source="{Binding Source={StaticResource LogoAtBottomOfSideMenu}, Path=Source}" VerticalAlignment="Bottom"/>
+                  </Grid>
+              </Grid>
+          </Grid>
+          <Panel Grid.Column="1" Name="ColumnOne">
+            <ContentControl Content="{Binding RightWindowContent}"/>
+            <Border BorderBrush="{Binding MotBlueColor}"
+                    BorderThickness="0,0,0.5,0.5"
+                    CornerRadius="0,0,0,0">
+            </Border>
+          </Panel>
+        </Grid>
+      </Grid>
+    </Border>
+</Window>

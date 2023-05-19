@@ -1,0 +1,55 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MOTK.Views.NewTestStagesBanner">
+
+    <Grid ColumnDefinitions="100,140,125,140,112,100" ShowGridLines="False">
+        <Grid Grid.Column="0" ColumnDefinitions="32,60" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.LocatorClicked}" Source="{Binding Source={StaticResource BluePolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" IsVisible="{Binding $parent[Window].DataContext.LocatorClicked}">1</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding !$parent[Window].DataContext.LocatorClicked}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings">Locate</TextBlock>
+        </Grid>
+        
+        <Grid Grid.Column="1" ColumnDefinitions="32,100" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step2Future}" Source="{Binding Source={StaticResource TransparentPolygon}, Path=Source}" Width="32"/>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step2Current}" Source="{Binding Source={StaticResource BluePolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" IsVisible="{Binding !$parent[Window].DataContext.Step2Past}" Foreground="{Binding $parent[Window].DataContext.Step2NumberColor}">2</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step2Past}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings" Foreground="{Binding $parent[Window].DataContext.Step2NameColor}">Asset Details</TextBlock>
+        </Grid>
+        
+        <Grid Grid.Column="2" ColumnDefinitions="32,85" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step3Future}" Source="{Binding Source={StaticResource TransparentPolygon}, Path=Source}" Width="32"/>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step3Current}" Source="{Binding Source={StaticResource BluePolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" IsVisible="{Binding !$parent[Window].DataContext.Step3Past}" Foreground="{Binding $parent[Window].DataContext.Step3NumberColor}">3</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step3Past}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings" Foreground="{Binding $parent[Window].DataContext.Step3NameColor}">Oil Details</TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="3" ColumnDefinitions="32,100" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step4Future}" Source="{Binding Source={StaticResource TransparentPolygon}, Path=Source}" Width="32"/>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step4Current}" Source="{Binding Source={StaticResource BluePolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" IsVisible="{Binding !$parent[Window].DataContext.Step4Past}" Foreground="{Binding $parent[Window].DataContext.Step4NumberColor}">4</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step4Past}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings" Foreground="{Binding $parent[Window].DataContext.Step4NameColor}">Visual Check</TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="4" ColumnDefinitions="32,75" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step5Future}" Source="{Binding Source={StaticResource TransparentPolygon}, Path=Source}" Width="32"/>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step5Current}" Source="{Binding Source={StaticResource BluePolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" IsVisible="{Binding !$parent[Window].DataContext.Step5Past}" Foreground="{Binding $parent[Window].DataContext.Step5NumberColor}">5</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.Step5Past}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings" Foreground="{Binding $parent[Window].DataContext.Step5NameColor}">Confirm</TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="5" ColumnDefinitions="32,45" ShowGridLines="False">
+            <Image Grid.Column="0" IsVisible="{Binding !$parent[Window].DataContext.RunTestClicked}" Source="{Binding Source={StaticResource TransparentPolygon}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="0" Classes="NewTestBannerNumber" Foreground="{Binding $parent[Window].DataContext.Step6NumberColor}">6</TextBlock>
+            <Image Grid.Column="0" IsVisible="{Binding $parent[Window].DataContext.RunTestClicked}" Source="{Binding Source={StaticResource GreenPolygonWithTick}, Path=Source}" Width="32"/>
+            <TextBlock Grid.Column="1" Classes="NewTestBannerHeadings" Foreground="{Binding $parent[Window].DataContext.Step6NameColor}">Test</TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

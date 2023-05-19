@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
+             x:Class="MOTK.Views.AssetsView">
+
+    <Design.DataContext>
+        <viewModels:AssetsViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="150,20,15,365,20,70" ShowGridLines="False">
+      <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="90,50,25" ColumnDefinitions="25,345,75,18,140" ShowGridLines="False">
+          <TextBlock Grid.Row="0" Grid.Column="1" Classes="Assets" Text="Assets"></TextBlock>
+          <TextBox Grid.Row="1" Grid.Column="1" AcceptsReturn="True" Text="{Binding AssetToSearch}" VerticalContentAlignment="Center" CornerRadius="0" Watermark="Search Assets..." Padding="15,0,0,0"></TextBox>
+          <Button Grid.Row="1" Grid.Column="4" Classes="AddNew" Command="{Binding $parent[Window].DataContext.AddNewAssetInAssetsView}">
+              <Grid ColumnDefinitions="30,90" ShowGridLines="False">
+                  <Image Grid.Column="0" Source="{Binding Source={StaticResource PlusBlue}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                  <TextBlock Grid.Column="1" Classes="NextText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Add New</TextBlock>
+              </Grid>
+          </Button>
+          <Button Grid.Row="1" Grid.Column="2" Classes="NoBorderAndTransparent" Command="{Binding SearchClicked}">
+              <Image Source="{Binding Source={StaticResource SearchButton}, Path=Source}" Height="60" Width="75"/>
+          </Button>
+      </Grid>
+      <Grid Grid.Row="1" ColumnDefinitions="25,460,118" ShowGridLines="False">
+          <TextBlock Grid.Column="1" Classes="RowCount" Text="{Binding AssetCount}"></TextBlock>
+          <Button Grid.Column="2" Classes="ClearSearch" Padding="-1" HorizontalAlignment="Right" IsVisible="{Binding SearchButtonClicked}" Command="{Binding SearchCleared}">
+              <TextBlock Classes="ClearSearch" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Clear Search</TextBlock>
+          </Button>
+      </Grid>
+        <Grid Grid.Row="3" ColumnDefinitions="25,580" ShowGridLines="False">
+            <DataGrid Grid.Column="1" Items="{Binding Assets}" RowBackground="White" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="{Binding $parent[Window].DataContext.GridLineColor}" SelectedItem="{Binding SelectedAsset}" RowHeight="60">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="70,15">
+                                    <TextBlock Grid.Column="0" Classes="AssetHeader" Text="Asset ID" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                    <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrder}">
+                                        <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid RowDefinitions="20,20" VerticalAlignment="Center">
+                                    <TextBlock Grid.Row="0" Classes="AssetNameInAssetGrid" Text="{Binding AssetName}" />
+                                    <TextBlock Grid.Row="1" Classes="AssetDescriptionInAssetGrid" Text="{Binding AssetDescription}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+          </Grid>
+        <Grid Grid.Row="5">
+            <Grid ColumnDefinitions="25,159,312,100" ShowGridLines="False">
+                <Button Width="190" Grid.Column="1" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.AddOrDeleteSamplePointInAssetsView}" CommandParameter="{Binding SelectedAsset}" Background="{Binding $parent[Window].DataContext.BackButtonColor}" IsEnabled="{Binding AssetSelected}">
+                    <Grid  ColumnDefinitions="30,159" ShowGridLines="False">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource EditBlue}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="1" Classes="BackText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Edit Sample Points</TextBlock>
+                    </Grid>
+                </Button>
+                <Button Grid.Column="3" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.DeleteAssetInAssetView}" Background="{Binding $parent[Window].DataContext.BackButtonColor}" IsEnabled="{Binding AssetSelected}" CommandParameter="{Binding SelectedAsset}">
+                    <Grid ColumnDefinitions="60,25" ShowGridLines="False">
+                        <TextBlock Grid.Column="0" Classes="BackText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Delete</TextBlock>
+                        <Image Grid.Column="1" Source="{Binding Source={StaticResource DeleteBlue}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

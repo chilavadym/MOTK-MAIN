@@ -1,0 +1,234 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             xmlns:converters="clr-namespace:MOTK.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="2000"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.SavedTestResultView" 
+             Name="TestResultsView">
+    
+    <Design.DataContext>
+      <viewModels:SavedTestResultViewModel/>
+    </Design.DataContext>
+
+    <ScrollViewer Name="Scroll">
+      <Grid RowDefinitions="30,30,10,50,25,50,380,20,250,20,300,20,500,50" ColumnDefinitions="25, 745, 25" ShowGridLines="False">
+            <Button Grid.Row="1" Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.BackToSavedTests}" CommandParameter="false">
+                <Grid ColumnDefinitions="15,50">
+                    <Image Source="{Binding Source={StaticResource BackArrow}, Path=Source}" Grid.Column="0" Height="15" Width="15" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="1" Classes="BackFromTestResult" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Back</TextBlock>
+                </Grid>
+            </Button>
+            <Grid Grid.Row="3" Grid.Column="1" ColumnDefinitions="610,50" ShowGridLines="False">
+                <TextBlock Grid.Column="0" Classes="OilTestResultId" Text="{Binding TestId}"></TextBlock>
+                <Button Grid.Column="1" Classes="Action" Background="{Binding $parent[Window].DataContext.MotBlueColor}" Command="{Binding SelectActions}">
+                    <Grid ColumnDefinitions="70,25" ShowGridLines="False">
+                        <TextBlock Grid.Column="0" Classes="NextText">Actions</TextBlock>
+                        <Image Grid.Column="1" IsVisible="{Binding ShowUpArrow}" Source="{Binding Source={StaticResource UpArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Center"/>
+                        <Image Grid.Column="1" IsVisible="{Binding !ShowUpArrow}" Source="{Binding Source={StaticResource DownArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Center"/>
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="6" Column="1" Background="White" RowDefinitions="40,300,40" ColumnDefinitions="35,675,35" ShowGridLines="False">
+                <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="30,10,20,25,20,10,60,30,110" ShowGridLines="False">
+                    <Grid Grid.Row="0" ColumnDefinitions="25,100">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource TestResult}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Classes="TestResult">TEST RESULT</TextBlock>
+                    </Grid>
+                    <TextBlock Grid.Row="2" Classes="OilConditionMiniHeader">Oil Condition</TextBlock>
+                    <Image Grid.Row="3" Margin="0 0 0 2" IsVisible="{Binding ScaleIsEngine}" Source="{Binding Source={StaticResource EngineScale}, Path=Source}" HorizontalAlignment="Left"/>
+                    <Image Grid.Row="3" Margin="0 0 0 2" IsVisible="{Binding ScaleIsGearBox}" Source="{Binding Source={StaticResource GearboxScale}, Path=Source}" HorizontalAlignment="Left"/>
+                    <Image Grid.Row="3" Margin="0 0 0 2" IsVisible="{Binding ScaleIsHydraulic}" Source="{Binding Source={StaticResource HydraulicScale}, Path=Source}" HorizontalAlignment="Left"/>
+                    <Image Grid.Row="3" Margin="0 0 0 2" IsVisible="{Binding ScaleIsCompressor}" Source="{Binding Source={StaticResource CompressorScale}, Path=Source}" HorizontalAlignment="Left"/>
+                    <Image Grid.Row="3" Margin="0 0 0 2" IsVisible="{Binding ScaleIsTransformer}" Source="{Binding Source={StaticResource TransformerScale}, Path=Source}" HorizontalAlignment="Left"/>
+                    <!--
+                    <Image Grid.Row="3" Source="{Binding Source={StaticResource OilConditionSliderSlim}, Path=Source}" HorizontalAlignment="Left" Margin="-3,0,0,0"/>
+                    -->
+                  <Slider IsEnabled="True" Minimum="{Binding IndicatorMinValue, Mode=TwoWay}" Grid.Row="3" Maximum="{Binding IndicatorMaxValue, Mode=TwoWay}" Background="Transparent" Value="{Binding SliderValue}" ></Slider>
+                    <Grid Grid.Row="4" ColumnDefinitions="337,337" ShowGridLines="False">
+                        <TextBlock Grid.Column="0" Classes="ExtremeValues" Text="{Binding MinValue}"></TextBlock>
+                        <TextBlock Grid.Column="1" Classes="ExtremeValues" HorizontalAlignment="Right" Text="{Binding MaxValue}"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="6" ColumnDefinitions="337,337" ShowGridLines="False">
+                        <Image Grid.Column="0" IsVisible="{Binding AlertResult}" Source="{Binding Source={StaticResource TestResultAlert}, Path=Source}"/>
+                        <Image Grid.Column="0" IsVisible="{Binding CautionResult}" Source="{Binding Source={StaticResource TestResultCaution}, Path=Source}"/>
+                        <Image Grid.Column="0" IsVisible="{Binding OkayResult}" Source="{Binding Source={StaticResource TestResultOkay}, Path=Source}"/>
+                        <Button Grid.Column="1" Classes="NoBorder" Height="60" Width="337" Background="{Binding TdnBackgroundColor}">
+                            <TextBlock Classes="Tdn" Text="{Binding TdnOrLossFactor}"></TextBlock>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="8" RowDefinitions="20,20,20,30,10" ColumnDefinitions="20,160,160,160,160,20" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" ShowGridLines="False">
+                        <TextBlock Grid.Row="1" Grid.Column="1" Classes="IndividualOilConditionHeading">Remaining Useful Life</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Classes="IndividualOilConditionValue" Text="{Binding RemainingUsefulLife}"></TextBlock>
+                        <Image Grid.Row="3" Grid.Column="1" IsVisible="{Binding RemainingUseFulLifeIsAlert}" Source="{Binding Source={StaticResource GraphAlert}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="1" IsVisible="{Binding RemainingUseFulLifeIsCaution}" Source="{Binding Source={StaticResource GraphCaution}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="1" IsVisible="{Binding RemainingUseFulLifeIsOkay}" Source="{Binding Source={StaticResource GraphOkay}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <!--
+                        <TextBlock Grid.Row="1" Grid.Column="2" Classes="IndividualOilConditionHeading">Rate of Change</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="2" Classes="IndividualOilConditionValue" Text="{Binding RateOfChange}"></TextBlock>
+                        <Image Grid.Row="3" Grid.Column="2" IsVisible="{Binding RateOfChangeIsAlert}" Source="{Binding Source={StaticResource TestResultAlert}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="2" IsVisible="{Binding RateOfChangeIsCaution}" Source="{Binding Source={StaticResource TestResultCaution}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="2" IsVisible="{Binding RateOfChangeIsOkay}" Source="{Binding Source={StaticResource TestResultOkay}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        -->
+                        <TextBlock Grid.Row="1" Grid.Column="3" Classes="IndividualOilConditionHeading">Visual Indication</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="3" Classes="IndividualOilConditionValue" Text="{Binding VisualIndication}"></TextBlock>
+                        <Image Grid.Row="3" Grid.Column="3" IsVisible="{Binding VisualIndicationIsAlert}" Source="{Binding Source={StaticResource GraphAlert}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="3" IsVisible="{Binding VisualIndicationIsCaution}" Source="{Binding Source={StaticResource GraphCaution}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="3" IsVisible="{Binding VisualIndicationIsOkay}" Source="{Binding Source={StaticResource GraphOkay}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <!--
+                        <TextBlock Grid.Row="1" Grid.Column="4" Classes="IndividualOilConditionHeading">Time to Maintenance</TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="4" Classes="IndividualOilConditionValue" Text="{Binding TimeToMaintenance}"></TextBlock>
+                        <Image Grid.Row="3" Grid.Column="4" IsVisible="{Binding TimeToMaintenanceIsAlert}" Source="{Binding Source={StaticResource TestResultAlert}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="4" IsVisible="{Binding TimeToMaintenanceIsCaution}" Source="{Binding Source={StaticResource TestResultCaution}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        <Image Grid.Row="3" Grid.Column="4" IsVisible="{Binding TimeToMaintenanceIsOkay}" Source="{Binding Source={StaticResource TestResultOkay}, Path=Source}" Height="25" HorizontalAlignment="Left"/>
+                        -->
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="4" IsVisible="{Binding IsGridVisible}" Grid.Column="1" ColumnDefinitions="580,165">
+              <StackPanel Grid.Column="1" IsVisible="{Binding ShowUpArrow}" >
+                  <Button Classes="ActionHeaders" IsVisible="{Binding CanRepeat}" Command="{Binding $parent[Window].DataContext.RepeatTest}" CommandParameter="{Binding OilTestResult.OilTest}">
+                      <Grid ColumnDefinitions="130,45" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="ActionHeaders">Repeat Test</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource RepeatTest}, Path=Source}" Height="15" Width="15" Margin="0,0,20,0"/>
+                      </Grid>
+                  </Button>
+                  <Button Classes="ActionHeaders" Command="{Binding $parent[Window].DataContext.ExportData}" CommandParameter="{Binding OilTestResultForReporting}">
+                      <Grid ColumnDefinitions="130,45" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="ActionHeaders">Export to TSV</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource Tsv}, Path=Source}" Height="15" Width="15" Margin="0,0,20,0"/>
+                      </Grid>
+                  </Button>
+                <Button Classes="ActionHeaders" Command="{Binding $parent[Window].DataContext.CopyToClipboard}" CommandParameter="{Binding OilTestResultForReporting}">
+                      <Grid ColumnDefinitions="130,45" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="ActionHeaders">Copy to Clipboard</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource CopyToClipboard}, Path=Source}" Height="15" Width="15" Margin="0,0,20,0"/>
+                      </Grid>
+                  </Button>
+                  <Button Classes="ActionHeaders" Command="{Binding Print}" CommandParameter="{Binding ElementName=Scroll}">
+                      <Grid ColumnDefinitions="130,45" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="ActionHeaders">Export to PDF</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource Pdf}, Path=Source}" Height="15" Width="15" Margin="0,0,20,0"/>
+                      </Grid>
+                  </Button>
+                  <Button Name="DiscardButton" Classes="ActionHeaders" Command="{Binding $parent[Window].DataContext.DiscardTest}" CommandParameter="{Binding OilTestResult}">
+                      <Grid ColumnDefinitions="130,45" ShowGridLines="False">
+                          <TextBlock Grid.Column="0" Classes="ActionHeaders">Discard Test</TextBlock>
+                          <Image Grid.Column="1" Source="{Binding Source={StaticResource DiscardTest}, Path=Source}" Height="15" Width="15" Margin="0,0,20,0"/>
+                      </Grid>
+                  </Button>
+              </StackPanel>
+            </Grid>
+            <Grid Grid.Row="8" Column="1" RowDefinitions="30,200,30" ColumnDefinitions="30,680,30" Background="{Binding $parent[Window].DataContext.MotBlueColorDarker}" ShowGridLines="False">
+                <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="30,20,30,10,20,100" ShowGridLines="False">
+                  <Grid Grid.Row="0" ColumnDefinitions="30,*">
+                      <Image Grid.Column="0" Source="{Binding Source={StaticResource InfoWhite}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Left"></Image>
+                      <TextBlock Grid.Column="1" Classes="SummaryHeading">SUMMARY</TextBlock>
+                  </Grid>
+                  <Grid Grid.Row="2" ColumnDefinitions="350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="0" Classes="ObserveRecommend">OBSERVATION</TextBlock>
+                      <TextBlock Grid.Column="1" Classes="ObserveRecommend" IsVisible="{Binding ShowInRecommendation}">RECOMMENDATION</TextBlock>
+                  </Grid>
+                    <Grid Grid.Row="4" ColumnDefinitions="350,*" ShowGridLines="False">
+                        <TextBlock Grid.Column="0" Classes="ObserveRecommendMessageHeading" Text="{Binding MessageHeading}"></TextBlock>
+                        <TextBlock Grid.Column="1" Classes="ObserveRecommendMessageHeading" Text="{Binding MessageHeading}" IsVisible="{Binding ShowInRecommendation}"></TextBlock>
+                    </Grid>
+                  <Grid Grid.Row="5" ColumnDefinitions="350,*" ShowGridLines="False">
+                      <TextBlock Grid.Column="0" Classes="ObserveRecommendMessage" Text="{Binding ObservationMessage}"></TextBlock>
+                      <TextBlock Grid.Column="1" Classes="ObserveRecommendMessage" Text="{Binding RecommendationMessage}"></TextBlock>
+                  </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="10" Column="1" RowDefinitions="25,20,20,20,20,20,20,20,20,20,20,20,20" ShowGridLines="False">
+                <Grid Grid.Row="1" ColumnDefinitions="20,250,250,250,*" ShowGridLines="False">
+                    <Grid Grid.Column="1" ColumnDefinitions="20,120,100,60" ShowGridLines="False">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource AssetDetails}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="1" Classes="ConfirmationSubHeadings">ASSET</TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="2" ColumnDefinitions="20,120,100,60" ShowGridLines="False">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource OilDetails}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="1" Classes="ConfirmationSubHeadings">OIL</TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="3" ColumnDefinitions="20,120,100,60" ShowGridLines="False">
+                        <Image Grid.Column="0" Source="{Binding Source={StaticResource Site}, Path=Source}" Height="20" Width="20" HorizontalAlignment="Right"/>
+                        <TextBlock Grid.Column="1" Classes="ConfirmationSubHeadings">SITE</TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="3" ColumnDefinitions="20,250,250,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">ASSET ID</TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">MANUFACTURER</TextBlock>
+                    <TextBlock Grid.Column="3" Classes="ConfirmationItemHeadings">SITE NAME</TextBlock>
+                </Grid>
+                <Grid Grid.Row="4" ColumnDefinitions="20,250,250,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding AssetId}"></TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding Manufacturer}"></TextBlock>
+                    <TextBlock Grid.Column="3" Classes="ConfirmationItems" Text="{Binding SiteName}"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="5" ColumnDefinitions="20,250,250,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">ASSET DESCRIPTION</TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">OIL NAME</TextBlock>
+                    <TextBlock Grid.Column="3" Classes="ConfirmationItemHeadings">SITE ADDRESS</TextBlock>
+                </Grid>
+                <Grid Grid.Row="6" ColumnDefinitions="20,250,250,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding AssetDescription}"></TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding OilName}"></TextBlock>
+                    <TextBlock Grid.Column="3" Classes="ConfirmationItems" Text="{Binding SiteAddress}" Height="300" VerticalAlignment="4"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="7" ColumnDefinitions="20,250,250" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">APPLICATION</TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">VISCOSITY</TextBlock>
+                </Grid>
+                <Grid Grid.Row="8" ColumnDefinitions="20,250,250" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding Application}"></TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding Viscosity}"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="9" ColumnDefinitions="20,250,250" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">HOURS USED</TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItemHeadings">SERIAL NUMBER</TextBlock>
+                </Grid>
+                <Grid Grid.Row="10" ColumnDefinitions="20,250,250" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding Hours}"></TextBlock>
+                    <TextBlock Grid.Column="2" Classes="ConfirmationItems" Text="{Binding SensorSerialNumber}"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="11" ColumnDefinitions="20,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItemHeadings">SAMPLE POINT</TextBlock>
+                </Grid>
+                <Grid Grid.Row="12" ColumnDefinitions="20,250,*" ShowGridLines="False">
+                    <TextBlock Grid.Column="1" Classes="ConfirmationItems" Text="{Binding SelectedSamplePointName}"></TextBlock>
+                </Grid>
+            </Grid>
+          <Grid ShowGridLines="False" RowDefinitions="50, auto" Grid.Row="12" Column="1" Margin="20 0 0 0">
+            <Grid Grid.Row="0" ColumnDefinitions="412, auto, auto" ShowGridLines="False">
+              <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Image Width="20" VerticalAlignment="Center" Height="17.5" Grid.Column="0" HorizontalAlignment="Left" Source="avares://MOTK/Assets/Branding/Default/Images/GraphIcon.png"></Image>
+                <TextBlock VerticalAlignment="Center" Margin="8 0 0 0" FontFamily="Cabin" FontSize="16" FontWeight="600" Foreground="#1A1A1A" Text="HISTORIC TREND" Grid.Column="0"></TextBlock>
+                <Separator Margin="10 0 0 0" Width="230" Height="1" Background="#D7D9E8"></Separator>
+              </StackPanel>
+              <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                <ComboBox Width="179" Height="48" Items="{Binding XAxisRanges}" Background="White" FontFamily="OpenSans" FontSize="16" HorizontalContentAlignment="Center" SelectedIndex="{Binding SelectedRange}">
+                  <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Value}" />
+                    </DataTemplate>
+                  </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Button VerticalAlignment="Center" Margin="16 0 0 0" Width="120" Background="#0D2C6D" Height="48" Command="{Binding ChangeView}">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0 0 8 0" Text="{Binding GraphButtonText}" Foreground="White"></TextBlock>
+                    <Image Source="/Assets/Branding/Default/Images/TableWhite.png" Width="16" Height="14"></Image>
+                  </StackPanel>
+                </Button>
+              </StackPanel>
+            </Grid>
+            <!--Content Area-->
+              <Grid  Grid.Row="1"  Margin="0 3 0 0" RowDefinitions="Auto, 40">
+                
+                <ContentControl Height="400" ScrollViewer.VerticalScrollBarVisibility="Auto" Background="Transparent" Content="{Binding CurrentViewModel, Mode=TwoWay}" ></ContentControl>
+                <TextBlock Height="50" Margin="60 0 0 0" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding DateCreated}"></TextBlock>
+              </Grid>
+          </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

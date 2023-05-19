@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             x:Class="MOTK.Views.AddressSettingsView">
+
+    <Design.DataContext>
+        <viewModels:AddressSettingsViewModel/>
+    </Design.DataContext>
+  
+    <Grid ColumnDefinitions="25,590,25" RowDefinitions="90,300,20,20,60" ShowGridLines="False">
+      <TextBlock Grid.Row="0" Grid.Column="1" Classes="AddressSettings" Text="Address Settings"></TextBlock>
+      <Border Grid.Row="2" Grid.Column="1" BorderBrush="Gray" BorderThickness="0,0,0,1">
+          <Grid></Grid>
+      </Border>
+      <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="25,25,50,25,25,125,25" ColumnDefinitions="30,530,30" Background="White" ShowGridLines="False">
+          <TextBlock Grid.Row="1" Grid.Column="1" Classes="AddressSettingsSubItems" Text="Site Name*"></TextBlock>
+          <TextBox Name="SiteNameTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding SiteName}" AcceptsReturn="True" MaxLength="65" FontFamily="Consolas" VerticalContentAlignment="Center" Watermark="Required..."></TextBox>
+          <TextBlock Grid.Row="4" Grid.Column="1" Classes="AddressSettingsSubItems" Text="Site Address*"></TextBlock>
+          <TextBox Name="SiteAddressTextBox" Grid.Row="5" Grid.Column="1" Text="{Binding SiteAddress}" AcceptsReturn="True" FontFamily="Consolas" VerticalContentAlignment="Top" Watermark="Required..."></TextBox>
+      </Grid>
+         <Grid Grid.Row="4" Grid.Column="1" ColumnDefinitions="108,500">
+           <Button Grid.Column="0" Classes="Save" Background="{Binding $parent[Window].DataContext.MotBlueColor}" Command="{Binding SaveAddressDetails}" IsEnabled="{Binding TextEntered}">
+           <Grid ColumnDefinitions="55,23" ShowGridLines="False">
+              <TextBlock Classes="Save" Grid.Column="0">Save</TextBlock>
+              <Image Grid.Column="1" Source="{Binding Source={StaticResource DiskInactive}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right" />
+           </Grid>
+           </Button>
+             <TextBlock Grid.Column="1" Classes="SettingsSavedMessage" Text="{Binding SettingsSavedMessage}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}"></TextBlock>
+         </Grid>
+    </Grid>
+</UserControl>

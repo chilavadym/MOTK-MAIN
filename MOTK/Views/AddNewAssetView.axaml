@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="280"
+        Height="280"
+        Width="360"
+        SystemDecorations="None"
+        x:Class="MOTK.Views.AddNewAssetView">
+
+    <Design.DataContext>
+        <viewModels:AddNewAssetViewModel/>
+    </Design.DataContext>
+
+    <Border BorderBrush="{Binding MotBlueColor}" BorderThickness="0.5">
+        <Grid RowDefinitions="30,30,60,60,60,30" ColumnDefinitions="30,300,30" ShowGridLines="False">
+            <TextBlock Grid.Row="1" Grid.Column="1" Classes="AddNewAssetOrSamplePointHeading" Text="Add New Asset" Foreground="{Binding MotBlueColor}"></TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="1" CornerRadius="0" Text="{Binding NewAssetName}" AcceptsReturn="True" MaxLength="22" FontFamily="Consolas" Height="30" Width="180" Watermark="Name..."></TextBox>
+            <TextBox Grid.Row="3" Grid.Column="1" CornerRadius="0" Text="{Binding NewAssetDescription}" AcceptsReturn="True" MaxLength="37" FontFamily="Consolas" Height="30" Width="300" Watermark="Description..."></TextBox>
+            <Grid Grid.Row="4" Grid.Column="1" ColumnDefinitions="50,70,50,85" ShowGridLines="False">
+                <Button Grid.Column="1" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding SaveCommand}" Foreground="{Binding MotBlueColor}">Save</Button>
+                <Button Grid.Column="3" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding CancelCommand}" Background="{Binding MotBlueColor}" Foreground="White" FontWeight="Normal">Cancel</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

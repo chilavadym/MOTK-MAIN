@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="150"
+        Height="150"
+        Width="250"
+        SystemDecorations="None"
+        x:Class="MOTK.Views.ExportDataSuccessView"
+        Title="ExportDataSuccessView">
+
+    <Design.DataContext>
+      <viewModels:ExportDataSuccessViewModel/>
+    </Design.DataContext>
+
+    <Border BorderBrush="{Binding MotBlueColor}" BorderThickness="0.5">
+        <Grid RowDefinitions="30,20,70" ColumnDefinitions="25,200,25" ShowGridLines="False">
+            <TextBlock Grid.Row="1" Grid.Column="1" IsVisible="{Binding WeAreExporting}" Classes="AddNewAssetOrSamplePointHeading" Text="Exporting Data Successful" Foreground="{Binding MotBlueColor}"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" IsVisible="{Binding !WeAreExporting}" Classes="AddNewAssetOrSamplePointHeading" Text="Copying Data Successful" Foreground="{Binding MotBlueColor}"></TextBlock>
+            <Grid Grid.Row="2" Grid.Column="1" ColumnDefinitions="67,67,67" ShowGridLines="False">
+                <Button Grid.Column="1" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding OkCommand}" Foreground="{Binding MotBlueColor}">OK</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

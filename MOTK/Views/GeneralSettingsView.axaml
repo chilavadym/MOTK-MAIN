@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             x:Class="MOTK.Views.GeneralSettingsView">
+    <Design.DataContext>
+        <viewModels:GeneralSettingsViewModel/>
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="25,590,25" RowDefinitions="90,470,10,70" ShowGridLines="False">
+        <TextBlock Grid.Row="0" Grid.Column="1" Classes="GeneralSettings" Text="General Settings"></TextBlock>
+        <Grid Grid.Row="1" Grid.Column="1" Background="White" RowDefinitions="40,40,40,40,40,40,40,40,40,40,40" ColumnDefinitions="25,565" ShowGridLines="False">
+            <TextBlock Grid.Row="0" Grid.Column="1" Classes="GeneralSettingsSubHeadings" Text="Temperature Units"></TextBlock>
+            <RadioButton Grid.Row="1" Grid.Column="1" Classes="GeneralSettingsSubItems" IsChecked="{Binding FahrenheitSelected}" GroupName="Temperature">Fahrenheit</RadioButton>
+            <RadioButton Grid.Row="2" Grid.Column="1" Classes="GeneralSettingsSubItems" IsChecked="{Binding CelciusSelected}" GroupName="Temperature">Celsius</RadioButton>
+            <TextBlock Grid.Row="3" Grid.Column="1" Classes="GeneralSettingsSubHeadings" Text="Oil Condition Units"></TextBlock>
+            <RadioButton Grid.Row="4" Grid.Column="1" Classes="GeneralSettingsSubItems" IsChecked="{Binding TanDeltaNumberSelected}" GroupName="Oil Condition">Tan Delta Number</RadioButton>
+            <RadioButton Grid.Row="5" Grid.Column="1" Classes="GeneralSettingsSubItems" IsChecked="{Binding LossFactorSelected}" GroupName="Oil Condition">Loss Factor</RadioButton>
+            <TextBlock Grid.Row="6" Grid.Column="1" Classes="GeneralSettingsSubHeadings" Text="Communications"></TextBlock>
+            <CheckBox Grid.Row="7" Grid.Column="1" Classes="GeneralSettingsSubItems" IsChecked="{Binding AllowThirdPartySerialPortsSelected}">Allow third party serial ports</CheckBox>
+            <Grid Grid.Row="8" Grid.Column="1" RowDefinitions="30,30,20,60" ColumnDefinitions="390,300" ShowGridLines="False">
+                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GeneralSettings2ndSubH" Text="Oil Database"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GeneralSettings3rdSubH" Text="Version"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GeneralSettingsVersionNumber" Text="{Binding $parent[Window].DataContext.OilDatabaseVersion}"></TextBlock>
+              <Button Command="{Binding $parent[Window].DataContext.CheckForDbUpdates}" Grid.Row="3" Grid.Column="0" Classes="CheckForUpdates" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Update from File</Button>
+                <TextBlock Grid.Row="0" Grid.Column="1" Classes="GeneralSettings2ndSubH" Text="Application"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="1" Classes="GeneralSettings3rdSubH" Text="Version"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Classes="GeneralSettingsVersionNumber" Text="{Binding $parent[Window].DataContext.AppNumber}"></TextBlock>
+              <Button Command="{Binding $parent[Window].DataContext.CheckForAppUpdates}" Grid.Row="3" Grid.Column="1" Classes="CheckForUpdates" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Check for updates</Button>            </Grid>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1" ColumnDefinitions="108,300">
+            <Button Grid.Column="0"  Classes="Save" Background="{Binding $parent[Window].DataContext.MotBlueColor}" Command="{Binding SaveGeneralSettings}" IsEnabled="{Binding NewOptionChosen}">
+                <Grid ColumnDefinitions="55,23" ShowGridLines="False">
+                    <TextBlock Classes="Save" Grid.Column="0">Save</TextBlock>
+                    <Image Grid.Column="1" Source="{Binding Source={StaticResource DiskInactive}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right" />
+                </Grid>
+            </Button>
+            <TextBlock Grid.Column="1" Classes="SettingsSavedMessage" Text="{Binding SettingsSavedMessage}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}"></TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

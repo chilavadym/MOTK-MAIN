@@ -1,0 +1,117 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.TableControlView">
+
+    <Design.DataContext>
+        <viewModels:TableControlViewModel/>
+    </Design.DataContext>
+
+  <Grid>
+    <DataGrid Grid.Row="3" Grid.Column="1"  Items="{Binding Trends}" RowBackground="White" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="{Binding $parent[Window].DataContext.GridLineColor}" SelectedItem="{Binding SelectedSavedTest}" RowHeight="60" HorizontalScrollBarVisibility="Disabled">
+      <DataGrid.Columns>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+              <Grid >
+                <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Date" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.HeaderTemplate>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid Width="150">
+                <TextBlock Classes="SavedTestsGridContent" Text="{Binding Date}" />
+              </Grid>
+
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+              <Grid>
+                <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Time" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+    
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.HeaderTemplate>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid Width="100">
+                <TextBlock Grid.Row="0" Classes="SavedTestsGridContentBold" Text="{Binding Time}" />
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+              <Grid>
+                <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Oil Condition" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+             
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.HeaderTemplate>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid  Width="120">
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Grid.Row="0" Classes="SavedTestsGridContentBold" Text="{Binding OilCondition}" />
+                  <Image Margin="4 0 0 0" Grid.Column="0" Width="14" Height="12" IsVisible="{Binding AlertResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphSmallAlert.png"/>
+                  <Image Margin="4 0 0 0" Grid.Column="0"  Width="14" Height="12" IsVisible="{Binding CautionResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphSmallCaution.png"/>
+                  <Image Margin="4 0 0 0" Grid.Column="0"  Width="14" Height="12" IsVisible="{Binding OkayResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphSmallOk.png"/>
+
+                </StackPanel>
+
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+              <Grid>
+                <TextBlock Grid.Column="0" Classes="SavedTestsGridHeader" Text="Remaining Useful Life"></TextBlock>
+        
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.HeaderTemplate>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid  Width="150">
+                <TextBlock HorizontalAlignment="Center" Classes="SavedTestsGridContent" Text="{Binding RemainingLife}" />
+              </Grid>
+             
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn>
+          <DataGridTemplateColumn.HeaderTemplate>
+            <DataTemplate>
+              <Grid HorizontalAlignment="Right" Width="200">
+                <TextBlock HorizontalAlignment="Center" Grid.Column="0" Classes="SavedTestsGridHeader" Text="Visual Condition"></TextBlock>
+              </Grid>
+            </DataTemplate>
+          </DataGridTemplateColumn.HeaderTemplate>
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <Grid Width="200" HorizontalAlignment="Right"  ShowGridLines="True">
+                <Image Grid.Column="0" Width="64" Height="22" IsVisible="{Binding AlertResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphAlert.png"/>
+                <Image Grid.Column="0"  Width="64" Height="22" IsVisible="{Binding CautionResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphCaution.png"/>
+                <Image Grid.Column="0"  Width="64" Height="22" IsVisible="{Binding OkayResult}" Source="avares://MOTK/Assets/Branding/Default/Images/GraphOkay.png"/>
+       
+              </Grid>
+            </DataTemplate>
+
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+  </Grid>
+</UserControl>

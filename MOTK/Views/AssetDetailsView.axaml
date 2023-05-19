@@ -1,0 +1,86 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             xmlns:views="clr-namespace:MOTK.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.AssetDetailsView">
+
+  <Design.DataContext>
+    <viewModels:AssetDetailsViewModel/>
+  </Design.DataContext>
+
+  <Grid RowDefinitions="80, 260, 250" ColumnDefinitions="30, 735, 30" ShowGridLines="False">
+      <Panel Grid.Row="0" Grid.Column="1">
+          <views:NewTestStagesBanner></views:NewTestStagesBanner>
+      </Panel>
+      <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="70,30,50,10,30,50" Background="white" ShowGridLines="False">
+          <TextBlock Grid.Row="0" Grid.Column="0" Classes="AssetDetailsSettings" Text="Asset Details" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}"></TextBlock>
+          <Grid Grid.Row="1" ColumnDefinitions="560,180" ShowGridLines="false">
+              <TextBlock Grid.Column="0" Classes="AssetDetailsSubHeadings" Text="Test Reference*"></TextBlock>
+              <TextBlock Grid.Column="1" Classes="AssetDetailsSubHeadings" Text="Hours Used (ie. 100)"></TextBlock>
+          </Grid>
+          <Grid Grid.Row="2" ColumnDefinitions="20,530,30,140,30" ShowGridLines="False">
+              <TextBox Grid.Column="1" Text="{Binding TestReferenceName}" VerticalContentAlignment="Center" CornerRadius="0"></TextBox>
+              <TextBox Grid.Column="3" AcceptsReturn="True" Text="{Binding OilHours}" VerticalContentAlignment="Center" CornerRadius="0"></TextBox>
+          </Grid>
+          <TextBlock Grid.Row="4" Grid.Column="0" Classes="AssetDetailsSubHeadings" Text="Asset ID*"></TextBlock>
+          <Grid Grid.Row="5" ColumnDefinitions="20,500,60,140,30" ShowGridLines="False">
+              <ComboBox Grid.Column="1" Name="AssetIdTextBox" Items="{Binding AssetNames}" SelectedItem="{Binding SelectedAssetName}" Width="500" Height="50" CornerRadius="0">
+                  <ComboBox.ItemTemplate>
+                      <DataTemplate>
+                          <TextBlock Text="{Binding}"/>
+                      </DataTemplate>
+                  </ComboBox.ItemTemplate>
+              </ComboBox>
+              <TextBlock Grid.Column="2" Text="OR" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"></TextBlock>
+              <Button Grid.Column="3" Classes="AddNew" Command="{Binding $parent[Window].DataContext.AddNewAsset}" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">
+                 <Grid ColumnDefinitions="30,90" ShowGridLines="False">
+                     <Image Grid.Column="0" Source="{Binding Source={StaticResource PlusBlue}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                     <TextBlock Grid.Column="1" Classes="NextText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Add New</TextBlock>
+                 </Grid>
+              </Button>
+          </Grid>
+      </Grid>
+      <Grid Grid.Row="2" Grid.Column="1" IsVisible="{Binding AssetSelected}" RowDefinitions="30,50,20,30,50,20,150" Background="white" ShowGridLines="False">
+              <TextBlock Grid.Row="0" Grid.Column="0" Classes="AssetDetailsSubHeadings" Text="Asset Description"></TextBlock>
+              <Grid Grid.Row="1" ColumnDefinitions="20,700,30" ShowGridLines="False">
+                  <TextBox Grid.Column="1" Name="AssetDescriptionTextBox" Text="{Binding SelectedAssetDescription}" VerticalContentAlignment="Center" CornerRadius="0"></TextBox>
+              </Grid>
+              <TextBlock Grid.Row="3" Grid.Column="0" Classes="AssetDetailsSubHeadings" Text="Sample Point"></TextBlock>
+              <Grid Grid.Row="4" ColumnDefinitions="20,500,60,140,30" ShowGridLines="False">
+                  <ComboBox Grid.Column="1" Name="SamplePointComboBox" Items="{Binding SamplePointNames}" SelectedItem="{Binding SelectedSamplePointName}"  Width="500" Height="50" CornerRadius="0">
+                      <ComboBox.ItemTemplate>
+                          <DataTemplate>
+                              <TextBlock Text="{Binding }"/>
+                          </DataTemplate>
+                      </ComboBox.ItemTemplate>
+                  </ComboBox>
+                  <TextBlock Grid.Column="2" Text="OR" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"></TextBlock>
+                  <Button Grid.Column="3" Classes="AddNew" Command="{Binding $parent[Window].DataContext.AddNewSamplePoint}" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">
+                      <Grid ColumnDefinitions="30,90" ShowGridLines="False">
+                          <Image Grid.Column="0" Source="{Binding Source={StaticResource PlusBlue}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                          <TextBlock Grid.Column="1" Classes="NextText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Add New</TextBlock>
+                      </Grid>
+                  </Button>
+              </Grid>
+          <Grid Grid.Row="6" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}" ColumnDefinitions="109,522,109" ShowGridLines="False">
+                    <Button Grid.Column="0" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.LocatorStage}" Background="{Binding $parent[Window].DataContext.BackButtonColor}">
+                        <Grid ColumnDefinitions="30,79" ShowGridLines="False">
+                            <Image Grid.Column="0" Source="{Binding Source={StaticResource BackArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                            <TextBlock Grid.Column="1" Classes="BackText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Back</TextBlock>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="2" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.NewTestOilStage}" Background="{Binding $parent[Window].DataContext.MotBlueColor}" IsEnabled="{Binding SamplePointSelected}">
+                        <Grid ColumnDefinitions="50,25" ShowGridLines="False">
+                            <TextBlock Grid.Column="0" Classes="NextText">Next</TextBlock>
+                            <Image Grid.Column="1" Source="{Binding Source={StaticResource NextArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+      </Grid>
+  </Grid>
+</UserControl>
+

@@ -1,0 +1,26 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="200"
+        Height="200"
+        Width="500"
+        SystemDecorations="None"
+        x:Class="MOTK.Views.AreYouSureView">
+
+  <Design.DataContext>
+      <viewModels:AreYouSureViewModel/>
+  </Design.DataContext>
+
+    <Border BorderBrush="Black" BorderThickness="0.5">
+    <Grid RowDefinitions="30,50,50,45,30" ColumnDefinitions="30,440,30" ShowGridLines="False">
+        <TextBlock Grid.Row="1" Grid.Column="1" Classes="AreYouSureHeading" Text="Are you sure you want to exit?"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Classes="AreYouSureText" Text=""></TextBlock>
+        <Grid Grid.Row="3" Grid.Column="1" ColumnDefinitions="200,90,15,85" ShowGridLines="False">
+            <Button Grid.Column="1" Classes="AreYouSureBack" Command="{Binding BackCommand}" Foreground="{Binding MotBlueColor}">Back</Button>
+            <Button Grid.Column="3" Classes="AreYouSureYes" Command="{Binding YesCommand}" Background="{Binding MotBlueColor}" Foreground="White">Yes - Exit</Button>
+        </Grid>
+    </Grid>
+    </Border>
+</Window>

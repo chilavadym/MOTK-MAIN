@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.SettingsView">
+
+    <Design.DataContext>
+        <viewModels:SettingsViewModel/>
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="160,620" ShowGridLines="False">
+            <Grid Column="0" RowDefinitions="15,60,60,60" Background="{Binding MotBlueColorDarker}" ShowGridLines="False">
+                <Button Grid.Row="1" IsVisible="{Binding !GeneralSelected}" Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding General}">General</Button>
+                <Button Grid.Row="1" IsVisible="{Binding GeneralSelected}" Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding General}" Background="Gray">General</Button>
+                
+                <Button Grid.Row="2" IsVisible="{Binding !AddressSelected}"  Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding Address}">Address</Button>
+                <Button Grid.Row="2" IsVisible="{Binding AddressSelected}" Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding Address}" Background="Gray">Address</Button>
+                
+                <Button Grid.Row="3" IsVisible="{Binding !AssetsSelected}" Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding Assets}">Assets</Button>
+                <Button Grid.Row="3" IsVisible="{Binding AssetsSelected}" Classes="NoBorderAndTransparentSettingsSubItems" Command="{Binding Assets}" Background="Gray">Assets</Button>
+            </Grid>
+        <Panel Name="ColumnOne" Grid.Column="1">
+            <ContentControl Content="{Binding RightWindowContent}"/>
+        </Panel>
+    </Grid>
+</UserControl>

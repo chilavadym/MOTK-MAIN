@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MOTK.Views"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.NewTestResultsView">
+
+  <Design.DataContext>
+    <viewModels:NewTestResultsViewModel/>
+  </Design.DataContext>
+
+    <Panel>
+        <Grid RowDefinitions="80,110,260,250" ColumnDefinitions="30, 740, 30" ShowGridLines="False">
+            <Panel Grid.Row="0" Grid.Column="1">
+                <views:NewTestStagesBanner></views:NewTestStagesBanner>
+            </Panel>
+            <Grid Grid.Row="2" Grid.Column="1" RowDefinitions="250,30,30,20,20" ShowGridLines="False">
+                <Image Grid.Row="0" IsVisible="{Binding ZeroPercent}" Source="{Binding Source={StaticResource LoadingBar0Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding TenPercent}" Source="{Binding Source={StaticResource LoadingBar10Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding TwentyPercent}" Source="{Binding Source={StaticResource LoadingBar20Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding ThirtyPercent}" Source="{Binding Source={StaticResource LoadingBar30Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding FortyPercent}" Source="{Binding Source={StaticResource LoadingBar40Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding FiftyPercent}" Source="{Binding Source={StaticResource LoadingBar50Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding SixtyPercent}" Source="{Binding Source={StaticResource LoadingBar60Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding SeventyPercent}" Source="{Binding Source={StaticResource LoadingBar70Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding EightyPercent}" Source="{Binding Source={StaticResource LoadingBar80Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding NinetyPercent}" Source="{Binding Source={StaticResource LoadingBar90Percent}, Path=Source}" Height="200" Width="200" />
+                <Image Grid.Row="0" IsVisible="{Binding HundredPercent}" Source="{Binding Source={StaticResource LoadingBar100Percent}, Path=Source}" Height="200" Width="200" />
+                <TextBlock Grid.Row="2" Classes="TestingSample">Testing Sample</TextBlock>
+                <TextBlock Grid.Row="4" Classes="TestingSampleMessage">This could take up to a few minutes, please wait...</TextBlock>
+            </Grid>
+        </Grid>
+    </Panel>
+</UserControl>

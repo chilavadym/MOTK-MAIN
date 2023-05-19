@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="700"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.MobileOilTestKitView">
+
+    <Grid RowDefinitions="150, 60, 160, 70, 20, 70" ColumnDefinitions="100, 600, 100" ShowGridLines="False">
+        <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="160, 390" ShowGridLines="False">
+            <Image Grid.Column="0" Source="{Binding Source={StaticResource MobileOilTestKit}, Path=Source}" HorizontalAlignment="Right"></Image>
+            <TextBlock Grid.Column="1" Classes="MobileOilTestKitBig" Text="Mobile Oil Test Kit" VerticalAlignment="Center" Padding="20,0,0,0"></TextBlock>
+        </Grid>
+        <TextBlock Grid.Row="2" Grid.Column="1" Classes="MobileOilTestKitText" Text="{Binding $parent[Window].DataContext.MobileOilTestKitText}"></TextBlock>
+        <Button Grid.Row="3" Grid.Column="1" Height="70" Width="500" Background="{Binding $parent[Window].DataContext.MotBlueColor}" Command="{Binding $parent[Window].DataContext.NewTest}" HorizontalAlignment="Center" Foreground="white" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Grid ColumnDefinitions="190,310" ShowGridLines="False">
+                <Image Grid.Column="0" Source="{Binding Source={StaticResource Plus}, Path=Source}" Height="18" Width="18" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Column="1" Classes="NewTest" Padding="10,0,0,0">New Test</TextBlock>
+            </Grid>
+        </Button>
+        <Button Command="{Binding $parent[Window].DataContext.QuickStart}" Grid.Row="5" Grid.Column="1" Height="70" Width="500" Background="white" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Grid ColumnDefinitions="160,340" ShowGridLines="False">
+                <Image Grid.Column="0" Source="{Binding Source={StaticResource QuestionMark}, Path=Source}" Height="18" Width="18" HorizontalAlignment="Right"/>
+                <TextBlock Grid.Column="1" Classes="QuickStartGuide" Padding="10,0,0,0">Quick Start Guide</TextBlock>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="180"
+        Height="180"
+        Width="400"
+        SystemDecorations="None"
+        x:Class="MOTK.Views.AreYouSureDeleteAssetView"
+        Title="AreYouSureDeleteAssetView">
+
+    <Design.DataContext>
+        <viewModels:AreYouSureDeleteAssetViewModel/>
+    </Design.DataContext>
+
+    <Border BorderBrush="{Binding MotBlueColor}" BorderThickness="0.5">
+        <Grid RowDefinitions="30,20,20,20,20,40" ColumnDefinitions="30,340,30" ShowGridLines="False">
+            <TextBlock Grid.Row="1" Grid.Column="1" Classes="AddNewAssetOrSamplePointHeading" Text="Are you sure you wish to delete" Foreground="{Binding MotBlueColor}"></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" Classes="AddNewAssetOrSamplePointHeading" Text="{Binding AssetNameString}" Foreground="{Binding MotBlueColor}"></TextBlock>
+            <Grid Grid.Row="5" Grid.Column="1" ColumnDefinitions="50,70,90,85" ShowGridLines="False">
+                <Button Grid.Column="1" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding YesCommand}" Foreground="{Binding MotBlueColor}">Yes</Button>
+                <Button Grid.Column="3" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding CancelCommand}" Background="{Binding MotBlueColor}" Foreground="White" FontWeight="Normal">Cancel</Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

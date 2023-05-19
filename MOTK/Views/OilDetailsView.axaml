@@ -1,0 +1,171 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MOTK.Views"
+             xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="1000"
+             Background="#F2F4FC"
+             x:Class="MOTK.Views.OilDetailsView">
+
+    <Design.DataContext>
+        <viewModels:OilDetailsViewModel/>
+    </Design.DataContext>
+    
+    <Panel>
+        <Grid RowDefinitions="80, 480, 20, 70" ColumnDefinitions="30, 740, 30" ShowGridLines="False">
+            <Panel Grid.Row="0" Grid.Column="1">
+                <views:NewTestStagesBanner></views:NewTestStagesBanner>
+            </Panel>
+            <Grid Grid.Row="1" Grid.Column="1" RowDefinitions="70,30,50,20,20,265" Background="white" ShowGridLines="False">
+                <TextBlock Grid.Row="0" Grid.Column="0" Classes="OilDetails" Text="Oil Details" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Classes="OilDetailsMessage" Text="For accurate results, please select the oil you will be using this sensor with below."></TextBlock>
+                <Grid Grid.Row="2" ColumnDefinitions="20,628,70" ShowGridLines="False">
+                    <TextBox Grid.Column="1" AcceptsReturn="True" CornerRadius="0" Text="{Binding OilToSearch}" VerticalContentAlignment="Center"  Watermark="Search Oil Database..." Padding="15,0,0,0"></TextBox>
+                    <Button Grid.Column="2" Classes="NoBorderAndTransparent" Command="{Binding SearchClicked}">
+                        <Image Source="{Binding Source={StaticResource SearchButton}, Path=Source}" Height="60" Width="75"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="3" ColumnDefinitions="20,597,100">
+                    <Button Grid.Column="2" Classes="ClearSearch" Padding="-1" HorizontalAlignment="Right" IsVisible="{Binding SearchButtonClicked}" Command="{Binding SearchCleared}">
+                        <TextBlock Classes="ClearSearch" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Clear Search</TextBlock>
+                    </Button>
+                </Grid>
+              <Grid Grid.Row="4" ColumnDefinitions="20,100,457,230" ShowGridLines="False">
+                  <TextBlock Grid.Column="1" Classes="RowCount" Text="{Binding OilCount}"></TextBlock>
+                  <Grid Grid.Column="3" ColumnDefinitions="130,100" ShowGridLines="False">
+                      <TextBlock Grid.Column="0" Classes="ProfileSearch" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Can't find your profile?</TextBlock>
+                      <Button Grid.Column="1" Classes="NoBorderAndTransparent" Padding="0">
+                          <Image Source="{Binding Source={StaticResource ProfileSearch}, Path=Source}" Height="15" Width="15"/>
+                      </Button>
+                  </Grid>
+              </Grid>
+                <Grid Grid.Row="5" ColumnDefinitions="20,700" ShowGridLines="False">
+                    <DataGrid Grid.Column="1" Items="{Binding Oils}" RowBackground="White" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="{Binding $parent[Window].DataContext.GridLineColor}" SelectedItem="{Binding SelectedOil}" RowHeight="30" HorizontalScrollBarVisibility="Disabled">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                              <DataGridTemplateColumn.HeaderTemplate>
+                                  <DataTemplate>
+                                      <Grid ColumnDefinitions="80,15,30">
+                                          <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Manufacturer" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                          <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderManufacturer}">
+                                              <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                          </Button>
+                                      </Grid>
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.HeaderTemplate>
+                              <DataGridTemplateColumn.CellTemplate>
+                                  <DataTemplate>
+                                      <TextBlock Classes="OilGridContent" Text="{Binding Manufacturer}" />
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.CellTemplate>
+                          </DataGridTemplateColumn>
+                          <DataGridTemplateColumn>
+                              <DataGridTemplateColumn.HeaderTemplate>
+                                  <DataTemplate>
+                                      <Grid ColumnDefinitions="60,15,120">
+                                          <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Oil Name" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                          <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderOilName}">
+                                              <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                          </Button>
+                                      </Grid>
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.HeaderTemplate>
+                              <DataGridTemplateColumn.CellTemplate>
+                                  <DataTemplate>
+                                      <TextBlock Classes="OilGridContent" Text="{Binding OilName}" />
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.CellTemplate>
+                          </DataGridTemplateColumn>
+                          <DataGridTemplateColumn>
+                              <DataGridTemplateColumn.HeaderTemplate>
+                                  <DataTemplate>
+                                      <Grid ColumnDefinitions="56,15,0">
+                                        <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Viscosity" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                          <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderViscosity}">
+                                              <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                          </Button>
+                                      </Grid>
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.HeaderTemplate>
+                              <DataGridTemplateColumn.CellTemplate>
+                                  <DataTemplate>
+                                      <TextBlock Classes="OilGridContent" Text="{Binding Viscosity}" />
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.CellTemplate>
+                          </DataGridTemplateColumn>
+                          <DataGridTemplateColumn>
+                              <DataGridTemplateColumn.HeaderTemplate>
+                                  <DataTemplate>
+                                      <Grid ColumnDefinitions="68,15,0">
+                                          <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Application" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                          <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderApplication}">
+                                              <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                          </Button>
+                                      </Grid>
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.HeaderTemplate>
+                              <DataGridTemplateColumn.CellTemplate>
+                                  <DataTemplate>
+                                      <TextBlock Classes="OilGridContent" Text="{Binding Application}" />
+                                  </DataTemplate>
+                              </DataGridTemplateColumn.CellTemplate>
+                          </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnDefinitions="60,15,0">
+                                            <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Min Temp" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                            <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderMinTemp}">
+                                                <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Classes="OilGridContent" Text="{Binding MinTemp}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid ColumnDefinitions="60,15,0">
+                                            <TextBlock Grid.Column="0" Classes="OilGridHeader" Text="Max Temp" Background="{Binding $parent[Window].DataContext.DefaultRightBackground}"></TextBlock>
+                                            <Button Grid.Column="1" Classes="NoBorderAndTransparent" Command="{Binding $parent[Window].DataContext.ToggleSortOrderMaxTemp}">
+                                                <Image Source="{Binding Source={StaticResource SortAssets}, Path=Source}" Height="10" Width="10" HorizontalAlignment="Left" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Classes="OilGridContent" Text="{Binding MaxTemp}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                      </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="3" Column="1">
+                <Grid ColumnDefinitions="109,522,109" ShowGridLines="False">
+                    <Button Grid.Column="0" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.AssetDetailsStage}" Background="{Binding $parent[Window].DataContext.BackButtonColor}">
+                        <Grid ColumnDefinitions="30,79" ShowGridLines="False">
+                            <Image Grid.Column="0" Source="{Binding Source={StaticResource BackArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                            <TextBlock Grid.Column="1" Classes="BackText" Foreground="{Binding $parent[Window].DataContext.MotBlueColor}">Back</TextBlock>
+                        </Grid>
+                    </Button>
+                    <Button Grid.Column="2" Classes="BackAndNext" Command="{Binding $parent[Window].DataContext.NewTestVisualCheckStage}" Background="{Binding $parent[Window].DataContext.MotBlueColor}" IsEnabled="{Binding OilSelected}">
+                        <Grid ColumnDefinitions="50,25" ShowGridLines="False">
+                            <TextBlock Grid.Column="0" Classes="NextText">Next</TextBlock>
+                            <Image Grid.Column="1" Source="{Binding Source={StaticResource NextArrow}, Path=Source}" Height="15" Width="15" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Panel>
+  
+</UserControl>

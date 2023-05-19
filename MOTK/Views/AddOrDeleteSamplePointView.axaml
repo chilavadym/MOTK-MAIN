@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="360" d:DesignHeight="400"
+        Height="400"
+        Width="360"
+        SystemDecorations="None"
+        x:Class="MOTK.Views.AddOrDeleteSamplePointView"
+        Title="AddOrDeleteSamplePointView">
+
+    <Design.DataContext>
+        <viewModels:AddOrDeleteSamplePointViewModel/>
+    </Design.DataContext>
+
+  <Border BorderBrush="{Binding MotBlueColor}" BorderThickness="0.5">
+    <Grid RowDefinitions="30,20,20,20,200,5,60" ColumnDefinitions="30,300,30" ShowGridLines="False">
+        <TextBlock Grid.Row="1" Grid.Column="1" Classes="AddNewAssetOrSamplePointHeading" Text="Sample Points For" Foreground="{Binding MotBlueColor}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Classes="AddNewAssetOrSamplePointHeading" Text="{Binding AssetName}" Foreground="{Binding MotBlueColor}"></TextBlock>
+        <DataGrid Grid.Row="4" Grid.Column="1" Items="{Binding SamplePoints}" RowBackground="White" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="{Binding GridLineColor}" SelectedItem="{Binding SelectedSamplePoint}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sample Points"  Binding="{Binding Name}" Width="300" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="6" Grid.Column="1" ColumnDefinitions="60,50,60,50,75" ShowGridLines="false">
+            <Button Grid.Column="0" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding DeleteCommand}" Foreground="{Binding MotBlueColor}" IsEnabled="{Binding SamplePointSelected}">Delete</Button>
+            <Button Grid.Column="2" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding AddCommand}" Foreground="{Binding MotBlueColor}">Add</Button>
+            <Button Grid.Column="4" Classes="AddNewAssetOrSamplePointSaveCancel" Command="{Binding CloseCommand}" Background="{Binding MotBlueColor}" Foreground="White" FontWeight="Normal" HorizontalAlignment="Right">Close</Button>
+        </Grid>
+    </Grid>
+  </Border>
+
+</Window>

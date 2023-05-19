@@ -1,0 +1,880 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:local="clr-namespace:OxyPlot.Avalonia;assembly=OxyPlot.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="TextBlock.MobileOilTestKitBig">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style Selector="TextBlock.MobileOilTestKitSmall">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.NoBorderAndTransparent">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="Button.NoBorderAndTransparentSettingsSubItems">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="160"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.NewTest">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+
+    <Style Selector="TextBlock.QuickStartGuide">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="TextBlock.ItemInSideMenu">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.VersionNumbers">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.VisualCheck">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="20,0,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.VisualCheckMessage">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="20,0,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.VisualCheckItems">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="30,20,0,0"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="570"/>
+    </Style>
+
+    <Style Selector="Button.VisualCheckItems">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="60"></Setter>
+        <Setter Property="Width" Value="660"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.GeneralSettings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.GeneralSettingsSubHeadings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="CheckBox.GeneralSettingsSubItems">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.GeneralSettings2ndSubH">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.GeneralSettings3rdSubH">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.GeneralSettingsVersionNumber">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style Selector="Button.CheckForUpdates">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Width" Value="150"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AddressSettings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+  <Style Selector="TextBlock.AddressSettingsSubItems">
+      <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+      <Setter Property="FontWeight" Value="SemiBold"></Setter>
+  </Style>
+
+    <Style Selector="TextBlock.HelpHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.HelpText">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="Button.Help">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="220"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.MobileOilTestKitText">
+      <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+      <Setter Property="FontSize" Value="20"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AssetDetailsSettings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AssetDetailsSubHeadings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="Button.AddNew">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="140"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.BackText">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.NextText">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    
+    <Style Selector="Button.BackAndNext">
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="109"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="Button.Save">
+        <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="48"></Setter>
+        <Setter Property="Width" Value="108"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.Save">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.RunTest">
+        <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="140"></Setter>
+        <Setter Property="Padding" Value="15,0,0,0"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="Button.AreYouSureBack">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="45"></Setter>
+        <Setter Property="Width" Value="90"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="Button.AreYouSureYes">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="45"></Setter>
+        <Setter Property="Width" Value="110"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AreYouSureHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AreYouSureText">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AddNewAssetOrSamplePointHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="Button.AddNewAssetOrSamplePointSaveCancel">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Width" Value="70"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmSettings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilDetails">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="20,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilDetailsMessage">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Padding" Value="20,0,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmationWarnHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmationWarning">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmationSubHeadings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmationItemHeadings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ConfirmationItems">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style Selector="Button.ConfirmationEdit">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Width" Value="80"></Setter>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.SettingsSavedMessage">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="30,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.Assets">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AssetNameInAssetGrid">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+        <Setter Property="Width" Value="580"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AssetDescriptionInAssetGrid">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Padding" Value="10,0,0,0"></Setter>
+        <Setter Property="Width" Value="580"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.AssetHeader">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Padding" Value="5,3,0,0"></Setter>
+        <Setter Property="Width" Value="580"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TestingSample">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TestingSampleMessage">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.SavedTests">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilTestResultId">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.BackFromTestResult">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="Button.Action">
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Width" Value="135"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TestResult">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.RowCount">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style Selector="TextBlock.ClearSearch">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+
+    <Style Selector="Button.ClearSearch">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ProfileSearch">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilGridHeader">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilGridContent">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="9,0,0,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="DataGridColumnHeader">
+        <Setter Property="AreSeparatorsVisible" Value="false" />
+    </Style>
+
+    <Style Selector="TextBlock.SavedTestsGridHeader">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.SavedTestsGridContent">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="9,0,0,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.SavedTestsGridContentBold">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Padding" Value="9,0,0,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="Button.NoBorder">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.Tdn">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.SummaryHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ObserveRecommend">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/Cabin/static/Cabin/Cabin-Regular.ttf#Cabin"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ObserveRecommendMessageHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ObserveRecommendMessage">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.IndividualOilConditionHeading">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style Selector="TextBlock.IndividualOilConditionValue">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.NewTestBannerNumber">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="5,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.NewTestBannerHeadings">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.OilConditionMiniHeader">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.ExtremeValues">
+        <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+    </Style>
+    
+    <Style Selector="TextBlock.ActionHeaders">
+      <Setter Property="FontFamily" Value="/Assets/Branding/Default/Fonts/OpenSans/static/OpenSans/OpenSans-Regular.ttf#Open Sans"/>
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="FontWeight" Value="Normal"></Setter>
+      <Setter Property="Padding" Value="10,0,0,0"></Setter>
+    </Style>
+
+    <Style Selector="Button.ActionHeaders">
+        <Setter Property="Height" Value="35"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="CornerRadius" Value="0"></Setter>
+    </Style>
+
+  <Style Selector="Image">
+    <Style.Resources>
+      <ImageBrush x:Key="Icon" Source="/Assets/Icon.ico" />
+      <ImageBrush x:Key="Splash" Source="/Assets/Branding/Default/Images/Splash.jpg" />
+      <ImageBrush x:Key="SplashIcon0" Source="/Assets/Branding/Default/Images/SplashIcon0.png" />
+      <ImageBrush x:Key="SplashIcon1" Source="/Assets/Branding/Default/Images/SplashIcon1.png" />
+      <ImageBrush x:Key="SplashIcon2" Source="/Assets/Branding/Default/Images/SplashIcon2.png" />
+      <ImageBrush x:Key="SplashIcon3" Source="/Assets/Branding/Default/Images/SplashIcon3.png" />
+
+      <ImageBrush x:Key="MobileOilTestKit" Source="/Assets/Branding/Default/Images/MobileOilTestKit.ico" />
+      <ImageBrush x:Key="MobileOilTestKitSmall" Source="/Assets/Branding/Default/Images/MobileOilTestKitSmall.png" />
+      <ImageBrush x:Key="LogoAtBottomOfSideMenu" Source="/Assets/Branding/Default/Images/LogoAtBottomOfSideMenu.png" />
+
+      <ImageBrush x:Key="Plus" Source="/Assets/Branding/Default/Images/Plus.png" />
+      <ImageBrush x:Key="Disk" Source="/Assets/Branding/Default/Images/Disk.png" />
+      <ImageBrush x:Key="Gear" Source="/Assets/Branding/Default/Images/Gear.png" />
+      <ImageBrush x:Key="QuestionMark" Source="/Assets/Branding/Default/Images/QuestionMark.png" />
+
+      <ImageBrush x:Key="PlusInactive" Source="/Assets/Branding/Default/Images/PlusInactive.png" />
+      <ImageBrush x:Key="DiskInactive" Source="/Assets/Branding/Default/Images/DiskInactive.png" />
+      <ImageBrush x:Key="GearInactive" Source="/Assets/Branding/Default/Images/GearInactive.png" />
+      <ImageBrush x:Key="QuestionMarkInactive" Source="/Assets/Branding/Default/Images/QuestionMarkInactive.png" />
+
+      <ImageBrush x:Key="ClearBright" Source="/Assets/Branding/Default/Images/ClearBright.png" />
+      <ImageBrush x:Key="Dark" Source="/Assets/Branding/Default/Images/Dark.png" />
+      <ImageBrush x:Key="CloudyHazy" Source="/Assets/Branding/Default/Images/CloudyHazy.png" />
+      <ImageBrush x:Key="Emulsified" Source="/Assets/Branding/Default/Images/Emulsified.png" />
+      <ImageBrush x:Key="SolidDebris" Source="/Assets/Branding/Default/Images/SolidDebris.png" />
+
+      <ImageBrush x:Key="Information" Source="/Assets/Branding/Default/Images/Information.png" />
+      <ImageBrush x:Key="BackArrow" Source="/Assets/Branding/Default/Images/BackArrow.png" />
+      <ImageBrush x:Key="NextArrow" Source="/Assets/Branding/Default/Images/NextArrow.png" />
+      <ImageBrush x:Key="UpArrow" Source="/Assets/Branding/Default/Images/UpArrow.png" />
+      <ImageBrush x:Key="DownArrow" Source="/Assets/Branding/Default/Images/DownArrow.png" />
+      <ImageBrush x:Key="InformationBlue" Source="/Assets/Branding/Default/Images/InformationBlue.png" />
+
+      <ImageBrush x:Key="AssetDetails" Source="/Assets/Branding/Default/Images/AssetDetails.png" />
+      <ImageBrush x:Key="OilDetails" Source="/Assets/Branding/Default/Images/OilDetails.png" />
+      <ImageBrush x:Key="BlueRightArrow" Source="/Assets/Branding/Default/Images/BlueRightArrow.png" />
+
+      <ImageBrush x:Key="PlusBlue" Source="/Assets/Branding/Default/Images/PlusBlue.png" />
+      <ImageBrush x:Key="EditBlue" Source="/Assets/Branding/Default/Images/EditBlue.png" />
+      <ImageBrush x:Key="DeleteBlue" Source="/Assets/Branding/Default/Images/DeleteBlue.png" />
+
+      <ImageBrush x:Key="LoadingBar0Percent" Source="/Assets/Branding/Default/Images/LoadingBar_0Percent.png" />
+      <ImageBrush x:Key="LoadingBar10Percent" Source="/Assets/Branding/Default/Images/LoadingBar_10Percent.png" />
+      <ImageBrush x:Key="LoadingBar20Percent" Source="/Assets/Branding/Default/Images/LoadingBar_20Percent.png" />
+      <ImageBrush x:Key="LoadingBar30Percent" Source="/Assets/Branding/Default/Images/LoadingBar_30Percent.png" />
+      <ImageBrush x:Key="LoadingBar40Percent" Source="/Assets/Branding/Default/Images/LoadingBar_40Percent.png" />
+      <ImageBrush x:Key="LoadingBar50Percent" Source="/Assets/Branding/Default/Images/LoadingBar_50Percent.png" />
+      <ImageBrush x:Key="LoadingBar60Percent" Source="/Assets/Branding/Default/Images/LoadingBar_60Percent.png" />
+      <ImageBrush x:Key="LoadingBar70Percent" Source="/Assets/Branding/Default/Images/LoadingBar_70Percent.png" />
+      <ImageBrush x:Key="LoadingBar80Percent" Source="/Assets/Branding/Default/Images/LoadingBar_80Percent.png" />
+      <ImageBrush x:Key="LoadingBar90Percent" Source="/Assets/Branding/Default/Images/LoadingBar_90Percent.png" />
+      <ImageBrush x:Key="LoadingBar100Percent" Source="/Assets/Branding/Default/Images/LoadingBar_100Percent.png" />
+
+      <ImageBrush x:Key="OilConditionSliderSlim" Source="/Assets/Branding/Default/Images/OilConditionSliderSlim.png" />
+      <ImageBrush x:Key="EngineScale" Source="/Assets/Branding/Default/Images/EngineScale.png" />
+      <ImageBrush x:Key="GearboxScale" Source="/Assets/Branding/Default/Images/GearboxScale.png" />
+      <ImageBrush x:Key="HydraulicScale" Source="/Assets/Branding/Default/Images/HydraulicScale.png" />
+      <ImageBrush x:Key="CompressorScale" Source="/Assets/Branding/Default/Images/CompressorScale.png" />
+      <ImageBrush x:Key="TransformerScale" Source="/Assets/Branding/Default/Images/TransformerScale.png" />
+
+      <ImageBrush x:Key="TestResult" Source="/Assets/Branding/Default/Images/TestResult.png" />
+      <ImageBrush x:Key="TestResultAlert" Source="/Assets/Branding/Default/Images/TestResultAlert.png" />
+      <ImageBrush x:Key="TestResultCaution" Source="/Assets/Branding/Default/Images/TestResultCaution.png" />
+      <ImageBrush x:Key="TestResultOkay" Source="/Assets/Branding/Default/Images/TestResultOkay.png" />
+
+      <ImageBrush x:Key="SortAssets" Source="/Assets/Branding/Default/Images/SortAssets.png" />
+      <ImageBrush x:Key="SearchButton" Source="/Assets/Branding/Default/Images/SearchButton.png" />
+      <ImageBrush x:Key="ProfileSearch" Source="/Assets/Branding/Default/Images/ProfileSearch.png" />
+      <ImageBrush x:Key="InfoWhite" Source="/Assets/Branding/Default/Images/InfoWhite.png" />
+      <ImageBrush x:Key="Site" Source="/Assets/Branding/Default/Images/Site.png" />
+
+      <ImageBrush x:Key="BluePolygon" Source="/Assets/Branding/Default/Images/BluePolygon.png" />
+      <ImageBrush x:Key="GreenPolygonWithTick" Source="/Assets/Branding/Default/Images/GreenPolygonWithTick.png" />
+      <ImageBrush x:Key="TransparentPolygon" Source="/Assets/Branding/Default/Images/TransparentPolygon.png" />
+      <ImageBrush x:Key="LocateText" Source="/Assets/Branding/Default/Images/LocateText.png" />
+      <ImageBrush x:Key="ListArrow" Source="/Assets/Branding/Default/Images/ListArrow.png" />
+
+      <ImageBrush x:Key="RepeatTest" Source="/Assets/Branding/Default/Images/RepeatTest.png" />
+      <ImageBrush x:Key="CopyToClipboard" Source="/Assets/Branding/Default/Images/CopyToClipboard.png" />
+      <ImageBrush x:Key="DiscardTest" Source="/Assets/Branding/Default/Images/DiscardTest.png" />
+      <ImageBrush x:Key="ExportData" Source="/Assets/Branding/Default/Images/ExportData.png" />
+      <ImageBrush x:Key="Print" Source="/Assets/Branding/Default/Images/Print.png" />
+      <ImageBrush x:Key="Pdf" Source="/Assets/Branding/Default/Images/Pdf.png" />
+      <ImageBrush x:Key="Tsv" Source="/Assets/Branding/Default/Images/Tsv.png" />
+
+      <ImageBrush x:Key="GraphAlert" Source="/Assets/Branding/Default/Images/GraphAlert.png" />
+      <ImageBrush x:Key="GraphCaution" Source="/Assets/Branding/Default/Images/GraphCaution.png" />
+      <ImageBrush x:Key="GraphOkay" Source="/Assets/Branding/Default/Images/GraphOkay.png" />
+    </Style.Resources>
+
+
+  </Style>
+  <Style Selector="local|TrackerControl">
+    <Setter Property="Background" Value="#E0FFFFA0" />
+    <Setter Property="BorderBrush" Value="Black" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="LineStroke" Value="#80000000" />
+    <Setter Property="HorizontalLineVisibility" Value="true" />
+    <Setter Property="VerticalLineVisibility" Value="true" />
+    <Setter Property="Distance" Value="7" />
+    <Setter Property="CornerRadius" Value="0" />
+    <Setter Property="ShowPointer" Value="true" />
+    <Setter Property="CanCenterHorizontally" Value="true" />
+    <Setter Property="CanCenterVertically" Value="true" />
+    <Setter Property="IsHitTestVisible" Value="false" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ClipToBounds="False">
+            <Line Name="PART_HorizontalLine"  IsVisible="{TemplateBinding HorizontalLineVisibility}"
+      Stroke="{TemplateBinding LineStroke}"
+      StrokeDashArray="{TemplateBinding LineDashArray}" StartPoint="0,0">
+            
+            </Line>
+            <Line StartPoint="-50, 0" Name="PART_VerticalLine" IsVisible="{TemplateBinding VerticalLineVisibility}"
+      Stroke="{TemplateBinding LineStroke}"
+      StrokeDashArray="{TemplateBinding LineDashArray}" />
+            <Panel Name="PART_ContentContainer" ClipToBounds="False">
+            
+              <ContentPresenter Name="PART_Content" Content="{TemplateBinding Content}" HorizontalAlignment="Center" />
+            </Panel>
+          </Canvas>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style Selector="local|PlotView">
+    <Setter Property="Background" Value="White" />
+    <Setter Property="DefaultTrackerTemplate">
+      <Setter.Value>
+        <ControlTemplate>
+          <local:TrackerControl Position="{Binding Position}" LineExtents="{Binding PlotModel.PlotArea}">
+            <local:TrackerControl.Content>
+              <TextBlock Text="{Binding Text}" Margin="7" />
+            </local:TrackerControl.Content>
+          </local:TrackerControl>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ZoomRectangleTemplate">
+      <Setter.Value>
+        <ControlTemplate>
+          <Rectangle Fill="#40FFFF00" Stroke="Black" StrokeDashArray="3,1" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+        BorderThickness="{TemplateBinding BorderThickness}">
+            <Panel Name="PART_Panel" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style Selector="local|Plot">
+    <Setter Property="Background" Value="White" />
+    <Setter Property="DefaultTrackerTemplate">
+      <Setter.Value>
+        <ControlTemplate>
+          <local:TrackerControl Position="{Binding Position}" LineExtents="{Binding PlotModel.PlotArea}">
+            <local:TrackerControl.Content>
+              <TextBlock Text="{Binding Text}" Margin="7" />
+            </local:TrackerControl.Content>
+          </local:TrackerControl>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ZoomRectangleTemplate">
+      <Setter.Value>
+        <ControlTemplate>
+          <Rectangle Fill="#40FFFF00" Stroke="Black" StrokeDashArray="3,1" />
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+        BorderThickness="{TemplateBinding BorderThickness}">
+            <Panel Name="PART_Panel" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style Selector="Slider:horizontal">
+    <Setter Property="MinWidth" Value="40"/>
+    <Setter Property="MinHeight" Value="20"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Foreground" Value="Transparent" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="20"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Border Name="TrackBackground" Background="Transparent" BorderBrush="Transparent" Grid.Row="1" Margin="0,0" VerticalAlignment="Center"/>
+          <Track Name="PART_Track" Grid.Row="1" Orientation="Horizontal">
+            <Track.DecreaseButton>
+              <RepeatButton Name="PART_DecreaseButton"
+                            Classes="repeattrack" />
+            </Track.DecreaseButton>
+            <Track.IncreaseButton>
+              <RepeatButton Name="PART_IncreaseButton"
+                            Classes="repeattrack" />
+            </Track.IncreaseButton>
+            <Thumb Name="thumb" MinWidth="20" MinHeight="20">
+              <Thumb.Template>
+                <ControlTemplate>
+                  <Grid>
+                    <!--   <Border
+                      Height="44" Width="25"
+                      BorderBrush="{Binding $parent[Slider].BorderBrush}"
+                      Classes="faderV">
+
+                      <Line StartPoint="2.5,22"
+                            EndPoint="20,22"
+                            Stroke="Red"
+                            StrokeThickness="2" />
+
+                    </Border>-->
+                    <Image Source="/Assets/Branding/Default/Images/Slider.png" Width="20" Height="20"/>
+                 
+                  </Grid>
+                </ControlTemplate>
+              </Thumb.Template>
+            </Thumb>
+          </Track>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+  
+</Styles>

@@ -1,0 +1,42 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MOTK.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MOTK.Views.SplashView"
+        Icon="/Assets/Icon.ico"
+        Width="700" Height="470"
+        Title="Splash">
+
+  <Design.DataContext>
+    <viewModels:SplashViewModel/>
+  </Design.DataContext>
+
+    <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="0">
+    <Grid>
+      <Image Source="{Binding Source={StaticResource Splash}, Path=Source}"></Image>
+      <TextBlock Text="{Binding VersionStatus}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10,10,0,0"/>
+      <Border  HorizontalAlignment="Left" VerticalAlignment="Bottom"  BorderBrush="Black" BorderThickness="0">
+        <Grid Height ="190" Width="700">
+          <TextBlock Text="{Binding AppNumberString}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15"/>
+          <TextBlock Text="© Tan Delta Systems" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+          <Border  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderBrush="Black" BorderThickness="0">
+            <Grid Height="70" Width="460">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding Source={StaticResource SplashIcon0}, Path=Source}" Grid.Column="0" HorizontalAlignment="Center" IsVisible="{Binding DriversChecked}" />
+              <Image Source="{Binding Source={StaticResource SplashIcon1}, Path=Source}" Grid.Column="1" HorizontalAlignment="Center" IsVisible="{Binding SettingsLoaded}"/>
+              <Image Source="{Binding Source={StaticResource SplashIcon2}, Path=Source}" Grid.Column="2" HorizontalAlignment="Center" IsVisible="{Binding DatabaseLoaded}"/>
+              <Image Source="{Binding Source={StaticResource SplashIcon3}, Path=Source}" Grid.Column="3" HorizontalAlignment="Center" IsVisible="{Binding RegistryUpdated}"/>
+            </Grid>
+          </Border>
+        </Grid>
+      </Border>
+    </Grid>
+  </Border>
+</Window>
